@@ -1,26 +1,28 @@
+// STEP 1: ✅ Replace your deploy.yml with this updated version (uses Node.js v20)
+
+// FILE: .github/workflows/deploy.yml
+
 name: Deploy to Firebase Hosting
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build project
+      - name: Build Next.js app
         run: npm run build
 
       - name: Deploy to Firebase Hosting
@@ -28,5 +30,4 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-          channelId: live
           projectId: lvgt-sandbox-1

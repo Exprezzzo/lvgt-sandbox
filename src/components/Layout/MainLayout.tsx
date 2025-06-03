@@ -15,6 +15,9 @@ interface MainLayoutProps {
   children: React.ReactNode
 }
 
+// Fix TypeScript issue with motion.header
+const MotionHeader = motion.header
+
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -28,12 +31,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-vegas-black via-vegas-black-light to-vegas-black">
-      {/* Header */}
-      <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-vegas-black/95 backdrop-blur-md border-b border-vegas-gold/20"
+      {/* Header with animation */}
+      <MotionHeader
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
+        className="fixed top-0 left-0 right-0 z-50 bg-vegas-black/95 backdrop-blur-md border-b border-vegas-gold/20"
       >
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex w-full items-center justify-between py-4">
@@ -93,7 +96,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             </div>
           </div>
         </nav>
-      </motion.header>
+      </MotionHeader>
 
       {/* Main Content */}
       <main className="pt-20">

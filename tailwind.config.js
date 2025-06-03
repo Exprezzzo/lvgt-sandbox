@@ -1,16 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './out/**/*.html' // required for static export preview
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        'vegas-gold': '#FFD700',
-        'vegas-purple': '#6B46C1',
-        'vegas-red': '#DC2626',
+        vegas: {
+          gold: '#FFC107',
+          purple: '#6B46C1',
+          pink: '#EC4899',
+          black: '#0A0A0A',
+        }
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Montserrat', 'sans-serif'],
       }
     },
   },

@@ -37,17 +37,31 @@
   }
 }
 
-@keyframes vegas-glow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Add to your existing globals.css */
+
+@keyframes neon-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.8))
+            drop-shadow(0 0 20px rgba(251, 191, 36, 0.6))
+            drop-shadow(0 0 30px rgba(251, 191, 36, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(251, 191, 36, 1))
+            drop-shadow(0 0 30px rgba(251, 191, 36, 0.8))
+            drop-shadow(0 0 40px rgba(251, 191, 36, 0.6));
+  }
 }
 
-/* Neon text effect */
-.neon-text {
-  text-shadow: 
-    0 0 10px rgba(251, 191, 36, 0.8),
-    0 0 20px rgba(251, 191, 36, 0.6),
-    0 0 30px rgba(251, 191, 36, 0.4),
-    0 0 40px rgba(251, 191, 36, 0.2);
+@keyframes border-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Optional: Add this class for extra Vegas sparkle */
+.vegas-sparkle {
+  animation: neon-pulse 2s ease-in-out infinite;
 }
